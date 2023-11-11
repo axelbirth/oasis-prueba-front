@@ -1,0 +1,10 @@
+.oasis-back {
+  background-image: linear-gradient(rgba(137, 137, 137, 0.5), rgba(137, 137, 137, 0.5)), url(../../../assets/oasis-back.jpg);
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+
+.btn-filtrar {
+  margin-top: 2em;
+}

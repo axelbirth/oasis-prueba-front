@@ -1,0 +1,95 @@
+<section class="oasis-back">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="text-center py-5">Oasis</h1>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="filter mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-6 col-xl-4">
+        <label for="exampleFormControlInput1" class="form-label">Filtrar por:</label>
+        <select class="form-select" aria-label="Default select example" (change)="changeFiltro($event)">
+          <option selected disabled></option>
+          <option [value]="1">Agua</option>
+          <option [value]="2">Latitud y Longitud</option>
+          <option [value]="3">Todos</option>
+        </select>
+      </div>
+      <div class="col-12 col-md-6 col-xl-4" *ngIf="filtro === 1">
+        <form [formGroup]="formFiltro" (ngSubmit)="filtrarAgua()">
+          <div class="row">
+            <div class="col-md-12 col-xl-6">
+              <label for="exampleFormControlInput1" class="form-label">Litros de agua</label>
+              <input type="number" class="form-control" [(ngModel)]="agua" formControlName="agua">
+              <div *ngIf="f.agua.invalid && f.agua.touched">
+                <span class="span-error" *ngIf="f.agua.errors.required">*
+                  Campo
+                  requerido</span>
+                <span class="span-error" *ngIf="f.agua.errors.min">*
+                  Excribir un numero valido</span>
+              </div>
+            </div>
+            <div class="col-md-12 col-xl-6">
+              <button class="btn btn-primary btn-filtrar" type="submit">Filtrar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-12 col-md-6 col-xl-8" *ngIf="filtro === 2">
+        <form [formGroup]="formFiltro" (ngSubmit)="filtrarLatLong()">
+          <div class="row">
+            <div class="col-md-5">
+              <label for="exampleFormControlInput1" class="form-label">Latitud</label>
+              <input type="number" class="form-control" [(ngModel)]="latitud" formControlName="latitud">
+              <div *ngIf="f.latitud.invalid && f.latitud.touched">
+                <span class="span-error" *ngIf="f.latitud.errors.required">*
+                  Campo
+                  requerido</span>
+                <span class="span-error" *ngIf="f.latitud.errors.min">*
+                  Excribir un numero valido</span>
+              </div>
+            </div>
+            <div class="col-md-5">
+              <label for="exampleFormControlInput1" class="form-label">Longitud</label>
+              <input type="number" class="form-control" [(ngModel)]="longitud" formControlName="longitud">
+              <div *ngIf="f.longitud.invalid && f.longitud.touched">
+                <span class="span-error" *ngIf="f.longitud.errors.required">*
+                  Campo
+                  requerido</span>
+                <span class="span-error" *ngIf="f.longitud.errors.min">*
+                  Excribir un numero valido</span>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <button class="btn btn-primary btn-filtrar" type="submit">Filtrar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="oasis-list py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-xl-4 my-3" *ngFor="let oas of oasis">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{oas.nombre}}</h5>
+            <p class="card-text">Latitud: {{oas.latitud}}°</p>
+            <p class="card-text">Longitud: {{oas.longitud}}°</p>
+            <p class="card-text">Agua: {{oas.agua}} Lts</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 my-5 text-center" *ngIf="notFound === true">
+        <h2>No se encontraron los resultados :(</h2>
+        <p>Vuelve a intentarlo.</p>
+      </div>
+    </div>
+  </div>
+</section>

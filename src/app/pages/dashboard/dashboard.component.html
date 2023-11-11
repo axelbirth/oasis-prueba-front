@@ -1,0 +1,110 @@
+<section class="dashboard-back">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="text-center py-5">Añadir un Oasis</h1>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="dasboard-form my-5">
+  <div class="container">
+    <form [formGroup]="formOasis" (ngSubmit)="submitOasis()">
+      <div class="row">
+        <div class="col-md-6 my-3">
+          <label for="exampleFormControlInput1" class="form-label">Nombre</label>
+          <input type="text" class="form-control" [(ngModel)]="oas.nombre" formControlName="nombre">
+          <div *ngIf="f.nombre.invalid && f.nombre.touched">
+            <span class="span-error" *ngIf="f.nombre.errors.required">*
+              Campo
+              requerido</span>
+            <span class="span-error" *ngIf="f.nombre.errors.pattern">*
+              Solo
+              letras y numeros</span>
+          </div>
+        </div>
+        <div class="col-md-6 my-3">
+          <label for="exampleFormControlInput1" class="form-label">Latitud</label>
+          <input type="number" class="form-control" [(ngModel)]="oas.latitud" formControlName="latitud">
+          <div *ngIf="f.latitud.invalid && f.latitud.touched">
+            <span class="span-error" *ngIf="f.latitud.errors.required">*
+              Campo
+              requerido</span>
+            <span class="span-error" *ngIf="f.latitud.errors.min">*
+              Excribir un numero valido</span>
+          </div>
+        </div>
+        <div class="col-md-6 my-3">
+          <label for="exampleFormControlInput1" class="form-label">Longitud</label>
+          <input type="number" class="form-control" [(ngModel)]="oas.longitud" formControlName="longitud">
+          <div *ngIf="f.longitud.invalid && f.longitud.touched">
+            <span class="span-error" *ngIf="f.longitud.errors.required">*
+              Campo
+              requerido</span>
+            <span class="span-error" *ngIf="f.longitud.errors.min">*
+              Excribir un numero valido</span>
+          </div>
+        </div>
+        <div class="col-md-6 my-3">
+          <label for="exampleFormControlInput1" class="form-label">Agua</label>
+          <input type="number" class="form-control" [(ngModel)]="oas.agua" formControlName="agua">
+          <div *ngIf="f.agua.invalid && f.agua.touched">
+            <span class="span-error" *ngIf="f.agua.errors.required">*
+              Campo
+              requerido</span>
+            <span class="span-error" *ngIf="f.agua.errors.min">*
+              Excribir un numero valido</span>
+          </div>
+        </div>
+        <div class="col-md-6 my-3">
+          <label for="exampleFormControlInput1" class="form-label">Destacado</label>
+          <select class="form-select" aria-label="Default select example" [(ngModel)]="oas.destacado"
+            formControlName="destacado">
+            <option selected disabled [value]="undefined"></option>
+            <option [value]="true">Si</option>
+            <option [value]="false">No</option>
+          </select>
+          <div *ngIf="f.destacado.invalid && f.destacado.touched">
+            <span class="span-error" *ngIf="f.destacado.errors.required">*
+              Campo
+              requerido</span>
+          </div>
+        </div>
+        <div class="col-12">
+          <button class="btn btn-primary" type="submit">Añadir</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+<section class="dashboard-table my-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <table class="table table-striped table-hover table-responsive">
+          <thead>
+            <tr>
+              <th scope="col">Nombre</th>
+              <th scope="col">Latitud</th>
+              <th scope="col">Longitud</th>
+              <th scope="col">Agua</th>
+              <th scope="col">Destacado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let oas of oasis">
+              <th>{{oas.nombre}}</th>
+              <td>{{oas.latitud}}°</td>
+              <td>{{oas.longitud}}°</td>
+              <td>{{oas.agua}} Lts</td>
+              <td *ngIf="oas.destacado === true"><img style="width: 15%;" src="assets/estrella-icon.png"
+                  alt="Estrella Icon"></td>
+              <td *ngIf="oas.destacado === false"><img style="width: 15%;" src="assets/cerrar-icon.png"
+                  alt="Cerrar Icon"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>

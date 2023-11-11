@@ -1,0 +1,6 @@
+.home-back {
+  background-image: linear-gradient(rgba(137, 137, 137, 0.5), rgba(137, 137, 137, 0.5)), url(../../../assets/home-back.jpg);
+  background-size: cover;
+  background-position: center;
+  color: white;
+}

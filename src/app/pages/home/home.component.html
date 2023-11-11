@@ -1,0 +1,29 @@
+<section class="home-back">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="text-center py-5">Bienvenido al sitio</h1>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="destacados my-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="pt-3">Oasis Destacados</h2>
+      </div>
+      <div class="col-md-6 col-xl-4 my-4" *ngFor="let oas of oasis">
+        <div class="card">
+          <h5 class="card-header"><img style="width: 8%;" src="assets/estrella-icon.png" alt="Estrella Icon"></h5>
+          <div class="card-body">
+            <h5 class="card-title">{{oas.nombre}}</h5>
+            <p class="card-text">Latitud: {{oas.latitud}}°</p>
+            <p class="card-text">Longitud: {{oas.longitud}}°</p>
+            <p class="card-text">Agua: {{oas.agua}} Lts</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
